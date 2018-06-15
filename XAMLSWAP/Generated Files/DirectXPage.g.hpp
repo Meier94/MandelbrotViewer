@@ -40,18 +40,6 @@ void ::XAMLSWAP::DirectXPage::Connect(int __connectionId, ::Platform::Object^ __
             this->mainCanvas = safe_cast<::Windows::UI::Xaml::Controls::Canvas^>(__target);
         }
         break;
-    case 4:
-        {
-            this->bottomAppBar = safe_cast<::Windows::UI::Xaml::Controls::AppBar^>(__target);
-        }
-        break;
-    case 5:
-        {
-            ::Windows::UI::Xaml::Controls::AppBarButton^ element5 = safe_cast<::Windows::UI::Xaml::Controls::AppBarButton^>(__target);
-            (safe_cast<::Windows::UI::Xaml::Controls::AppBarButton^>(element5))->Click += ref new ::Windows::UI::Xaml::RoutedEventHandler(this, (void (::XAMLSWAP::DirectXPage::*)
-                (::Platform::Object^, ::Windows::UI::Xaml::RoutedEventArgs^))&DirectXPage::AppBarButton_Click);
-        }
-        break;
     }
     _contentLoaded = true;
 }

@@ -14,7 +14,6 @@ interface Renderer
 };
 
 #include "Content\CudaDraw.h"
-#include "Content\SampleFpsTextRenderer.h"
 #include "DirectXPage.xaml.h"
 
 // Renders Direct2D and 3D content on the screen.
