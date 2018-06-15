@@ -26,6 +26,7 @@ XAMLSWAPMain::XAMLSWAPMain(XAMLSWAP::DirectXPage^ page, const std::shared_ptr<DX
 
 	//Panel1
 	SCPanel<CudaDraw>* Panel = new SCPanel<CudaDraw>(page, page->GetCanvas(), 1920*2/3, 1080*2/3, 10, 10);
+	Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->TryResizeView(Windows::Foundation::Size(1920 * 2 / 3 + 330, 1080 * 2 / 3 + 20));
 	page->addPanel((int)Panel);
 	auto renderer = new CudaDraw(m_deviceResources, Panel, 1920*2/3, 1080*2/3);
 

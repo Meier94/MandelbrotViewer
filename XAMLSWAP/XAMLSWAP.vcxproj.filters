@@ -68,10 +68,10 @@
     <ClCompile Include="Content\CudaDraw.cpp">
       <Filter>Content</Filter>
     </ClCompile>
+    <ClCompile Include="swapChainPanel.cpp" />
     <ClCompile Include="CudaDrawHelpers.cpp">
       <Filter>Content</Filter>
     </ClCompile>
-    <ClCompile Include="swapChainPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />

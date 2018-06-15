@@ -49,7 +49,7 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 	m_SCPanel->SurfaceScrlCallback([this](float delta, float xpos, float ypos) { ZoomUpdate(delta, xpos, ypos); });
 	m_SCPanel->SurfaceDragCallback([this](float dx, float dy) { PanningUpdate(dx, dy); });
 
-	auto Canvas = m_SCPanel->GetCanvas();
+	/*auto Canvas = m_SCPanel->GetCanvas();
 	//CS selector
 	comboBox = ref new Windows::UI::Xaml::Controls::ComboBox();
 	comboBox->Width = 300;
@@ -82,7 +82,7 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 
 	//TextField
 	m_iterationField = m_SCPanel->AddTextField(10, 200);
-
+	*/
 
 
 	CreateDeviceDependentResources();
