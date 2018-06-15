@@ -20,8 +20,3 @@
 #include <D3D11SDKLayers.h>
 #include <winuser.h>
 
-/*
-wchar_t dice[100];
-swprintf_s(dice, L"Dice: %f, %f, %f, %f", 1, 2, 3, 4);
-OutputDebugString(dice);
-*/

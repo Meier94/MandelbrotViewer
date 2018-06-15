@@ -19,8 +19,8 @@ SCPanelCommon::SCPanelCommon(XAMLSWAP::DirectXPage^ page, Canvas ^Canvas, int wi
 	m_rectHeight(300)
 {
 	m_canvas = Canvas;
-	m_canvas->Width = width + 330;
-	m_canvas->Height = height + 20;
+	//m_canvas->Width = width + 330;
+	//m_canvas->Height = height + 20;
 
 	m_panel = ref new SwapChainPanel();
 	m_panel->Width = width;

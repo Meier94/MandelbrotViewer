@@ -132,10 +132,10 @@ void CudaDraw::DrawIteration() {
 	//doPass
 	DrawPass();
 	numIterations++;
-	if (numIterations % 100 == 0) {
+	/*if (numIterations % 100 == 0) {
 		swprintf_s(iterationText, L"%d / %d iterations:", numIterations, totalIter);
 		m_SCPanel->Write(m_iterationField, iterationText);
-	}
+	}*/
 	passIdx++;
 	//Is it done with sweep of passive dim with current active dim offset?
 	if (passIdx == numPasses[dim ^ 1]) {
