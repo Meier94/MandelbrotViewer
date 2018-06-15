@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <ScrollViewer x:Name="Scroller" HorizontalScrollMode="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Disabled">
+    <ScrollViewer x:ConnectionId='2' x:Name="Scroller" HorizontalScrollMode="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Disabled">
         
-        <Canvas x:Name="mainCanvas" Width="1000" Height="1000" Background="Transparent">
+        <Canvas x:ConnectionId='3' x:Name="mainCanvas" Width="1000" Height="1000" Background="Transparent">
             
         </Canvas>
         
@@ -16,13 +16,14 @@
     
 
         <Page.BottomAppBar>
-    <AppBar x:Name="bottomAppBar" Padding="10,0,10,0">
+    <AppBar x:ConnectionId='4' x:Name="bottomAppBar" Padding="10,0,10,0">
       <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-        <AppBarButton AutomationProperties.Name="Sample Button"
+        <AppBarButton x:ConnectionId='5' AutomationProperties.Name="Sample Button"
                       AutomationProperties.AutomationId="SampleAppBarButton"
-                      Click="AppBarButton_Click"/>
+                                                />
                 
             </StackPanel>
     </AppBar>
   </Page.BottomAppBar>
 </Page>
+

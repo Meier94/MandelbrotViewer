@@ -75,8 +75,8 @@ void SCPanelCommon::MouseWheelCallback(float delta, PointerRoutedEventArgs^ e) {
 }
 
 void SCPanelCommon::Write(int textField, const wchar_t* text) {
-	m_page->Dispatcher->RunAsync(CoreDispatcherPriority::Normal, ref new DispatchedHandler([=]() {
+	/*m_page->Dispatcher->RunAsync(CoreDispatcherPriority::Normal, ref new DispatchedHandler([=]() {
 			m_textFields.at(textField)->Text = ref new Platform::String(text);
-		}, CallbackContext::Any));
+		}, CallbackContext::Any));*/
 
 }

@@ -25,10 +25,12 @@ XAMLSWAPMain::XAMLSWAPMain(XAMLSWAP::DirectXPage^ page, const std::shared_ptr<DX
 	freopen_s(&consoleFD, "CON", "w", stdout);*/
 
 	//Panel1
-	SCPanel<CudaDraw>* Panel = new SCPanel<CudaDraw>(page, page->GetCanvas(), 1920*2/3, 1080*2/3, 10, 10);
-	Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->TryResizeView(Windows::Foundation::Size(1920 * 2 / 3 + 330, 1080 * 2 / 3 + 20));
-	page->addPanel((int)Panel);
-	auto renderer = new CudaDraw(m_deviceResources, Panel, 1920*2/3, 1080*2/3);
+	int width = 1920;
+	int height = 1080;
+	SCPanel<CudaDraw>* Panel = new SCPanel<CudaDraw>(page, page->GetCanvas(), width, height, 10, 10);
+	//Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->TryResizeView(Windows::Foundation::Size(width + 330, height + 20));
+	page->addPanel((long long int)Panel); //long long int to preserve entire address
+	auto renderer = new CudaDraw(m_deviceResources, Panel, width, height);
 
 	//Panel2
 	/*SCPanel^ Panel2 = ref new SCPanel(page, page->GetCanvas(), 800, 600, 100, 800);
@@ -40,10 +42,6 @@ XAMLSWAPMain::XAMLSWAPMain(XAMLSWAP::DirectXPage^ page, const std::shared_ptr<DX
 	m_renderers.push_back(renderer);
 	//m_renderers.push_back(renderer2);
 	StartRenderLoop();
-	// TODO: Replace this with your app's content initialization.
-	//m_sceneRenderer = std::unique_ptr<CudaDraw>(new CudaDraw(m_deviceResources));
-
-	//m_fpsTextRenderer = std::unique_ptr<SampleFpsTextRenderer>(new SampleFpsTextRenderer(m_deviceResources));
 
 	// TODO: Change the timer settings if you want something other than the default variable timestep mode.
 	// e.g. for 60 FPS fixed timestep update logic, call:
@@ -62,7 +60,6 @@ XAMLSWAPMain::~XAMLSWAPMain()
 // Updates application state when the window size changes (e.g. device orientation change)
 void XAMLSWAPMain::CreateWindowSizeDependentResources() 
 {
-	// TODO: Replace this with the size-dependent initialization of your app's content.
 	for (std::vector<Renderer*>::iterator r = m_renderers.begin(); r != m_renderers.end(); ++r) {
 		auto renderer = *r;
 		renderer->CreateWindowSizeDependentResources();

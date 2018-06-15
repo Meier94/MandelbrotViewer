@@ -39,8 +39,8 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 	m_groupWidth(8),
 	m_groupHeight(8),
 	m_CBDTexOffsetZoom({0.0f, 0.0f, 1.0f, 0.0f}),
-	m_CBDParamOffsetZoom({ -0.7463, 0.1102, 0.008, 0.0 }),
-	m_drawSpec({ width, height , 40 , 45 })
+	m_CBDParamOffsetZoom({ -0.75112049050233554, -0.025753832194144760, 1.2e-9, 0.0 }),
+	m_drawSpec({ width, height , 20 , 15 })
 {
 	SetSwapChainPanel(panel);
 
@@ -49,7 +49,7 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 	m_SCPanel->SurfaceScrlCallback([this](float delta, float xpos, float ypos) { ZoomUpdate(delta, xpos, ypos); });
 	m_SCPanel->SurfaceDragCallback([this](float dx, float dy) { PanningUpdate(dx, dy); });
 
-	/*auto Canvas = m_SCPanel->GetCanvas();
+	auto Canvas = m_SCPanel->GetCanvas();
 	//CS selector
 	comboBox = ref new Windows::UI::Xaml::Controls::ComboBox();
 	comboBox->Width = 300;
@@ -82,7 +82,7 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 
 	//TextField
 	m_iterationField = m_SCPanel->AddTextField(10, 200);
-	*/
+	
 
 
 	CreateDeviceDependentResources();

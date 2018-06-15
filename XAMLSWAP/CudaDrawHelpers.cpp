@@ -11,10 +11,10 @@ void CudaDraw::ZoomUpdate(float delta, float xPos, float yPos) {
 	CBOffsetZoom* cbd = &m_CBDTexOffsetZoom;
 	float xRatio = xPos / 300;
 	float yRatio = 1.0f - yPos / 300;
-	cbd->zoom = min(100.0f, max(1.0f, cbd->zoom + 0.0002f*delta));
-	cbd->xOffset = min(0.0f, cbd->xOffset - 0.0002f*delta*xRatio);
+	cbd->xOffset = min(0.0f, cbd->xOffset - 0.0004f*delta*xRatio);
+	cbd->yOffset = min(0.0f, cbd->yOffset - 0.0004f*delta*yRatio);
+	cbd->zoom = min(100.0f, max(1.0f, cbd->zoom + 0.0004f*delta));
 	cbd->xOffset = cbd->zoom + cbd->xOffset < 1.0f ? 1.0f - cbd->zoom : cbd->xOffset;
-	cbd->yOffset = min(0.0f, cbd->yOffset - 0.0002f*delta*yRatio);
 	cbd->yOffset = cbd->zoom + cbd->yOffset < 1.0f ? 1.0f - cbd->zoom : cbd->yOffset;
 	m_texCompUpdate = true;
 	m_texCompMutex.unlock();
@@ -40,9 +40,9 @@ void CudaDraw::ParameterZoomUpdate(float delta, float xPos, float yPos) {
 	CBOffsetZoomDouble* cbd = &m_CBDParamOffsetZoom;
 	double xRatio = xPos / m_logicalSize.Width;
 	double yRatio = 1.0 - yPos / m_logicalSize.Height;
-	cbd->zoom = cbd->zoom * ( 1 + 0.0002*delta);
-	cbd->xOffset = cbd->xOffset - 0.0002*delta*cbd->zoom*xRatio;
-	cbd->yOffset = cbd->yOffset - 0.0002*delta*cbd->zoom*yRatio;
+	cbd->xOffset = cbd->xOffset + 0.0006*delta*cbd->zoom*xRatio;
+	cbd->yOffset = cbd->yOffset + 0.0006*delta*cbd->zoom*yRatio;
+	cbd->zoom = cbd->zoom * ( 1 - 0.0006*delta);
 	m_paramCompUpdate = true;
 	m_paramCompMutex.unlock();
 }
@@ -52,8 +52,8 @@ void CudaDraw::ParameterZoomUpdate(float delta, float xPos, float yPos) {
 void CudaDraw::ParameterPanningUpdate(float xDelta, float yDelta) {
 	m_paramCompMutex.lock();
 	CBOffsetZoomDouble* cbd = &m_CBDParamOffsetZoom;
-	cbd->xOffset = cbd->xOffset - 0.005*xDelta*cbd->zoom;
-	cbd->yOffset = cbd->yOffset + 0.005*yDelta*cbd->zoom;
+	cbd->xOffset = cbd->xOffset - 0.001*xDelta*cbd->zoom;
+	cbd->yOffset = cbd->yOffset + 0.001*yDelta*cbd->zoom;
 	m_paramCompUpdate = true;
 	m_paramCompMutex.unlock();
 }

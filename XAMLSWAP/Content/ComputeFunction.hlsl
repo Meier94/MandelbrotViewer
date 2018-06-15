@@ -155,18 +155,18 @@ float4 mandelbrot(int iter, double2 pos) {
 		zisqr = z.y * z.y;
 		i++;
 	}
-	return float4(
+	/*return float4(
 		float(i) / iter,
 		float(i) / iter,
 		float(i) / iter,
-		1.0f);
-	/*
+		1.0f);*/
+	
 	float step = 1.0f;
 	return float4(
 		-cos(i*0.10f * step)*0.5f + 0.5f,
 		-cos(i*0.20f * step)*0.5f + 0.5f,
 		-cos(i*0.30f * step)*0.5f + 0.5f,
-		1.0f);*/
+		1.0f);
 }
 
 [numthreads(8, 8, 1)]
@@ -177,7 +177,7 @@ void main(uint3 DTid : SV_DispatchThreadID)
 	float fy = (float)idx.y / height;
 	double2 pos = double2(fx, fy);
 
-	float4 color = mandelbrot(5000, pos*pZoom + pOffset);
+	float4 color = mandelbrot(7000, pos*pZoom + pOffset);
 	//float4 color = planet(fx, fy);
 
 	BufferOut[idx] = color;

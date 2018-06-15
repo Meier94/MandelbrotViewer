@@ -13,6 +13,7 @@ namespace Windows {
             namespace Controls {
                 ref class ScrollViewer;
                 ref class Canvas;
+                ref class AppBar;
             }
         }
     }
@@ -40,6 +41,7 @@ namespace XAMLSWAP
     
         private: ::Windows::UI::Xaml::Controls::ScrollViewer^ Scroller;
         private: ::Windows::UI::Xaml::Controls::Canvas^ mainCanvas;
+        private: ::Windows::UI::Xaml::Controls::AppBar^ bottomAppBar;
     };
 }
 

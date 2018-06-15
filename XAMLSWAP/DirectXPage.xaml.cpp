@@ -58,20 +58,11 @@ DirectXPage::DirectXPage():
 	m_deviceResources = std::make_shared<DX::DeviceResources>();
 	//m_deviceResources->SetSwapChainPanel(Panel->GetPanel());
 	
-	// Register our SwapChainPanel to get independent input pointer events
-	auto workItemHandler = ref new WorkItemHandler([this] (IAsyncAction ^)
-	{
-		//swapChainPanel->PointerPressed += ref new PointerEventHandler(this, &DirectXPage::swapPressed);
-		this->PointerPressed  += ref new PointerEventHandler(this, &DirectXPage::OnPointerPressed);
-		this->PointerMoved    += ref new PointerEventHandler(this, &DirectXPage::OnPointerMoved);
-		this->PointerReleased += ref new PointerEventHandler(this, &DirectXPage::OnPointerReleased);
-		this->PointerWheelChanged += ref new PointerEventHandler(this, &DirectXPage::OnPointerWheel);
-		// Begin processing input messages as they're delivered.
-		this->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit);
-	});
 
-	// Run task on a dedicated high priority background thread.
-	m_inputLoopWorker = ThreadPool::RunAsync(workItemHandler, WorkItemPriority::High, WorkItemOptions::TimeSliced);
+	this->PointerPressed  += ref new PointerEventHandler(this, &DirectXPage::OnPointerPressed);
+	this->PointerMoved    += ref new PointerEventHandler(this, &DirectXPage::OnPointerMoved);
+	this->PointerReleased += ref new PointerEventHandler(this, &DirectXPage::OnPointerReleased);
+	this->PointerWheelChanged += ref new PointerEventHandler(this, &DirectXPage::OnPointerWheel);
 
 	m_main = std::unique_ptr<XAMLSWAPMain>(new XAMLSWAPMain(this, m_deviceResources));
 

@@ -31,7 +31,7 @@ namespace XAMLSWAP
 		void OnCompositionScaleChanged(Windows::UI::Xaml::Controls::SwapChainPanel^ sender, Object^ args);
 		void OnSwapChainPanelSizeChanged(Platform::Object^ sender, Windows::UI::Xaml::SizeChangedEventArgs^ e);
 		Windows::UI::Xaml::Controls::Canvas^ GetCanvas() { return mainCanvas; }
-		void addPanel(int panel) { panels.push_back((SCPanelCommon*)panel); }
+		void addPanel(long long int panel) { panels.push_back((SCPanelCommon*)panel); }
 	private:
 		// XAML low-level rendering event handler.
 		void OnRendering(Platform::Object^ sender, Platform::Object^ args);
