@@ -5,7 +5,7 @@
 
 class SCPanelCommon {
 public:
-	SCPanelCommon(XAMLSWAP::DirectXPage^ page, Windows::UI::Xaml::Controls::Canvas ^Canvas, int width, int height, int posx, int posy);
+	SCPanelCommon(XAMLSWAP::DirectXPage^ page, Windows::UI::Xaml::Controls::Canvas ^Canvas, int width, int height, int posx, int posy, int rectWidth, int rectHeight);
 
 	Windows::Foundation::Size						GetLogicalSize() { return m_logicalSize; }
 	Windows::UI::Xaml::Controls::Canvas^			GetCanvas() { return m_canvas; }
@@ -17,6 +17,8 @@ public:
 
 	int		GetWidth() { return m_width; }
 	int		Getheight() { return m_height; }
+	int		GetRectWidth() { return m_rectWidth; }
+	int		GetRectHeight() { return m_rectHeight; }
 	bool	MouseOver() { return m_panelOver || m_surfaceOver; }
 	bool	Pressed() { return m_panelPressed || m_surfacePressed; }
 
@@ -78,8 +80,8 @@ public:
 	//SCPanel() = delete;
 
 
-	SCPanel(XAMLSWAP::DirectXPage^ page, Windows::UI::Xaml::Controls::Canvas ^Canvas, int width, int height, int posx, int posy):
-		SCPanelCommon(page, Canvas, width, height, posx, posy)
+	SCPanel(XAMLSWAP::DirectXPage^ page, Windows::UI::Xaml::Controls::Canvas ^Canvas, int width, int height, int posx, int posy, int rectWidth, int rectHeight):
+		SCPanelCommon(page, Canvas, width, height, posx, posy, rectWidth, rectHeight)
 	{
 		
 		

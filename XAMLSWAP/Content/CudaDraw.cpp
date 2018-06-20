@@ -39,8 +39,9 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 	m_groupWidth(8),
 	m_groupHeight(8),
 	m_CBDTexOffsetZoom({0.0f, 0.0f, 1.0f, 0.0f}),
-	m_CBDParamOffsetZoom({ -0.75112049050233554, -0.025753832194144760, 1.2e-9, 0.0 }),
-	m_drawSpec({ width, height , 20 , 15 })
+	//m_CBDParamOffsetZoom({ -0.75112049050233554, -0.025753832194144760, 1.2e-9, 0.0 }),
+	m_CBDParamOffsetZoom({ -2.5, -2, 4, 0.0 }),
+	m_drawSpec({ width, height , 16 , 18 })
 {
 	SetSwapChainPanel(panel);
 
@@ -104,6 +105,7 @@ void CudaDraw::UpdateRenderTargetSize()
 	m_effectiveDpi = DisplayInformation::GetForCurrentView()->LogicalDpi;
 	m_effectiveCompositionScaleX = m_SCPanel->GetPanel()->CompositionScaleX;
 	m_effectiveCompositionScaleY = m_SCPanel->GetPanel()->CompositionScaleY;
+
 	m_logicalSize = m_SCPanel->GetLogicalSize();
 
 	// To improve battery life on high resolution devices, render to a smaller render target

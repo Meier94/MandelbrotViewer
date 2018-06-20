@@ -5,10 +5,10 @@
     xmlns:local="using:XAMLSWAP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <ScrollViewer x:Name="Scroller" HorizontalScrollMode="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Disabled">
+    mc:Ignorable="d" HorizontalAlignment="Stretch">
+    <ScrollViewer x:Name="Scroller" HorizontalScrollMode="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Disabled" HorizontalAlignment="Stretch">
         
-        <Canvas x:Name="mainCanvas" Width="1000" Height="1000" Background="Transparent">
+        <Canvas x:Name="mainCanvas" Width="10000" Height="1000" Background="Transparent" HorizontalAlignment="Left">
             
         </Canvas>
         

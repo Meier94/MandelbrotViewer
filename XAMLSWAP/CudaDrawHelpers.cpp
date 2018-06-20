@@ -9,8 +9,8 @@ using namespace XAMLSWAP;
 void CudaDraw::ZoomUpdate(float delta, float xPos, float yPos) {
 	m_texCompMutex.lock();
 	CBOffsetZoom* cbd = &m_CBDTexOffsetZoom;
-	float xRatio = xPos / 300;
-	float yRatio = 1.0f - yPos / 300;
+	float xRatio = xPos / m_SCPanel->GetRectWidth();
+	float yRatio = 1.0f - yPos / m_SCPanel->GetRectHeight();
 	cbd->xOffset = min(0.0f, cbd->xOffset - 0.0004f*delta*xRatio);
 	cbd->yOffset = min(0.0f, cbd->yOffset - 0.0004f*delta*yRatio);
 	cbd->zoom = min(100.0f, max(1.0f, cbd->zoom + 0.0004f*delta));

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6" IgnorableNamespaces="uap mp uap6">
-  <Identity Name="51588MatsMeierMysen.MandelbrotXplorer" Publisher="CN=631988B2-F45A-43A2-8288-7278EFC80DB9" Version="1.1.0.0" />
+  <Identity Name="51588MatsMeierMysen.MandelbrotXplorer" Publisher="CN=631988B2-F45A-43A2-8288-7278EFC80DB9" Version="1.1.2.0" />
   <mp:PhoneIdentity PhoneProductId="dd180d33-63db-47e4-8bac-2b34d99102e9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Mandelbrot Xplorer</DisplayName>

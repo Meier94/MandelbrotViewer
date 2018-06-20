@@ -25,11 +25,34 @@ XAMLSWAPMain::XAMLSWAPMain(XAMLSWAP::DirectXPage^ page, const std::shared_ptr<DX
 	freopen_s(&consoleFD, "CON", "w", stdout);*/
 
 	//Panel1
-	int width = 1920;
-	int height = 1080;
-	SCPanel<CudaDraw>* Panel = new SCPanel<CudaDraw>(page, page->GetCanvas(), width, height, 10, 10);
-	Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->TryResizeView(Windows::Foundation::Size(width + 330, height + 20));
+	float width = 1920*2/5;
+	float height = 1080*2/5;
+	float rectWidth = 300;
+	float rectHeight = height;
+	float pad = 10;
+	float totalWidth = width + rectWidth + 3*pad;
+	float totalHeight = height + 2*pad;
+
+	auto effectiveDpi = Windows::Graphics::Display::DisplayInformation::GetForCurrentView()->LogicalDpi;
+	// Calculate the necessary render target size in pixels.
+	auto scaledWidth = DX::ConvertDipsToPixels(width, effectiveDpi);
+	auto scaledHeight = DX::ConvertDipsToPixels(height, effectiveDpi);
+	rectWidth = DX::ConvertDipsToPixels(rectWidth, effectiveDpi);
+	rectHeight = DX::ConvertDipsToPixels(rectHeight, effectiveDpi);
+	totalWidth = DX::ConvertDipsToPixels(totalWidth, effectiveDpi);
+	totalHeight = DX::ConvertDipsToPixels(totalHeight, effectiveDpi);
+	pad = DX::ConvertDipsToPixels(pad, effectiveDpi);
+
+	page->Width = totalWidth;
+
+
+	SCPanel<CudaDraw>* Panel = new SCPanel<CudaDraw>(page, page->GetCanvas(), (int)scaledWidth, (int)scaledHeight, pad, pad, (int)rectWidth, (int)rectHeight);
+	bool test = Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->TryResizeView(Windows::Foundation::Size(totalWidth, totalHeight));
 	page->addPanel((long long int)Panel); //long long int to preserve entire address
+	if (test)
+		OutputDebugString(L"ja");
+	else
+		OutputDebugString(L"nei");
 	auto renderer = new CudaDraw(m_deviceResources, Panel, width, height);
 
 	//Panel2

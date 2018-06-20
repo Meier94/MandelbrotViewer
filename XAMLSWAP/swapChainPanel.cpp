@@ -8,15 +8,15 @@ using namespace Windows::UI::Core;
 using namespace Platform;
 
 
-SCPanelCommon::SCPanelCommon(XAMLSWAP::DirectXPage^ page, Canvas ^Canvas, int width, int height, int posx, int posy) :
+SCPanelCommon::SCPanelCommon(XAMLSWAP::DirectXPage^ page, Canvas ^Canvas, int width, int height, int posx, int posy, int rectWidth, int rectHeight) :
 	m_xpos(posx),
 	m_ypos(posy),
 	m_page(page),
 	m_width(width),
 	m_height(height),
 	m_logicalSize(Windows::Foundation::Size(0.0f, 0.0f)),
-	m_rectWidth(300),
-	m_rectHeight(300)
+	m_rectWidth(rectWidth),
+	m_rectHeight(rectHeight)
 {
 	m_canvas = Canvas;
 	m_canvas->Width = width + 330;

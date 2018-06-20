@@ -34,10 +34,10 @@ DirectXPage::DirectXPage():
 {
 	InitializeComponent();
 
-	Scroller->Width = this->Width;
+	Scroller->Width = this->Width*2;
 	Scroller->Height = this->Height;
-	mainCanvas->Height = 1500;
-	mainCanvas->Width = 1500;
+	mainCanvas->Height = this->Height;
+	mainCanvas->Width = this->Width*2;
 
 
 	// Register event handlers for page lifecycle.
