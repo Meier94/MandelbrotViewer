@@ -40,7 +40,8 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 	m_groupHeight(8),
 	m_CBDTexOffsetZoom({0.0f, 0.0f, 1.0f, 0.0f}),
 	m_CBDParamOffsetZoom({ -0.75112049050233554, -0.025753832194144760, 1.2e-9, 0.0 }),
-	m_drawSpec({ width, height , 20 , 15 })
+	m_drawSpec({ width, height , 16 , 18 }),
+	m_textRenderer(deviceResources)
 {
 	SetSwapChainPanel(panel);
 
@@ -73,17 +74,24 @@ CudaDraw::CudaDraw(const std::shared_ptr<DX::DeviceResources>& deviceResources, 
 	blockWidthField->PlaceholderText = "Block Width";
 	blockWidthField->Width = 300;
 	m_SCPanel->Place(blockWidthField, 10, 120);
-
-	//BlockHeight
-	blockHeightField = ref new Windows::UI::Xaml::Controls::TextBox();
-	blockHeightField->PlaceholderText = "Block Height";
-	blockHeightField->Width = 300;
-	m_SCPanel->Place(blockHeightField, 10, 160);
-
-	//TextField
-	m_iterationField = m_SCPanel->AddTextField(10, 200);
 	*/
-
+	//BlockHeight
+	
+	auto field1 = ref new Windows::UI::Xaml::Controls::TextBlock();
+	field1->Text = "Scroll to zoom.";
+	field1->Width = 300;
+	m_SCPanel->Place(field1, 10, 0);
+	auto field2 = ref new Windows::UI::Xaml::Controls::TextBlock();
+	field2->Text = "Click/drag to pan.";
+	field2->Width = 300;
+	m_SCPanel->Place(field2, 10, 20);
+	auto field3 = ref new Windows::UI::Xaml::Controls::TextBlock();
+	field3->Text = "Box below has similar controls, but only \nstretches/moves the drawing surface for \ncloser inspection.";
+	field3->Width = 300;
+	m_SCPanel->Place(field3, 10, 60);
+	
+	TextBlok block(10, 10, 10, 10, 3);
+	m_textRenderer.addBlock(block);
 
 	CreateDeviceDependentResources();
 	CreateWindowSizeDependentResources();
@@ -326,6 +334,8 @@ void CudaDraw::Render()
 	// Draw the objects.
 	context->DrawIndexed(m_indexCount, 0, 0);
 
+	//m_textRenderer.Render();
+
 	//Release the sampler texture to aquisition by the sampler CS
 	resourceViews = nullptr;
 	context->PSSetShaderResources(0, 1, &resourceViews);
@@ -338,6 +348,8 @@ void CudaDraw::Render()
 
 void CudaDraw::CreateDeviceDependentResources()
 {
+	m_textRenderer.CreateDeviceDependentResources();
+
 	// Load shaders asynchronously.
 	auto loadVSTask = DX::ReadDataAsync(L"2DTextureVS.cso");
 	auto loadPSTask = DX::ReadDataAsync(L"2DTexturePS.cso");
@@ -579,6 +591,7 @@ void CudaDraw::CreateDeviceDependentResources()
 
 void CudaDraw::ReleaseDeviceDependentResources()
 {
+	m_textRenderer.ReleaseDeviceDependentResources();
 	m_loadingComplete = false;
 	m_vertexShader.Reset();
 	m_inputLayout.Reset();

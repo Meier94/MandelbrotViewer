@@ -101,7 +101,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <PackageCertificateKeyFile>XAMLSWAP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>XAMLSWAP_StoreKey.pfx</PackageCertificateKeyFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+    <PackageCertificateThumbprint>B8D19C3F4E3E7B4F21AEF8A63D54A6C08ED4A040</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
@@ -202,6 +209,7 @@
     </ClInclude>
     <ClInclude Include="Common\DeviceResources.h" />
     <ClInclude Include="swapChainPanel.h" />
+    <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="XAMLSWAPMain.h" />
     <ClInclude Include="DirectXPage.xaml.h">
       <DependentUpon>DirectXPage.xaml</DependentUpon>
@@ -219,6 +227,7 @@
     <ClCompile Include="Common\DeviceResources.cpp" />
     <ClCompile Include="CudaDrawHelpers.cpp" />
     <ClCompile Include="swapChainPanel.cpp" />
+    <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="XAMLSWAPMain.cpp" />
     <ClCompile Include="DirectXPage.xaml.cpp">
       <DependentUpon>DirectXPage.xaml</DependentUpon>
@@ -237,6 +246,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="XAMLSWAP_StoreKey.pfx" />
     <None Include="XAMLSWAP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +296,9 @@
     <Page Include="DirectXPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

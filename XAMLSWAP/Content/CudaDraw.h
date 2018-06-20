@@ -7,6 +7,7 @@
 #include "XAMLSWAPMain.h"
 #include "DirectXPage.xaml.h"
 #include <stdlib.h>
+#include "TextRenderer.h"
 
 namespace XAMLSWAP
 {
@@ -37,9 +38,6 @@ namespace XAMLSWAP
 		void DrawIteration();
 		void CudaDraw::DrawPass();
 
-
-	private:
-		void Rotate(float radians);
 
 	private:
 		struct VERTEX{
@@ -133,12 +131,14 @@ namespace XAMLSWAP
 		Windows::UI::Xaml::Controls::TextBox^			bufferHeightField;
 		Windows::UI::Xaml::Controls::TextBox^			blockWidthField;
 		Windows::UI::Xaml::Controls::TextBox^			blockHeightField;
-		int												m_iterationField;
+		Windows::UI::Xaml::Controls::TextBlock^			m_iterationField;
 
 		std::mutex							m_paramCompMutex;
 		std::mutex							m_texCompMutex;
 		std::mutex							m_renderMutex;
 		std::mutex							m_drawMutex;
+
+		TextRenderer						m_textRenderer;
 	};
 }
 
