@@ -42,6 +42,9 @@
     <ClCompile Include="CudaDrawHelpers.cpp">
       <Filter>Content</Filter>
     </ClCompile>
+    <ClCompile Include="TextRenderer.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="App.xaml.h" />
@@ -50,6 +53,9 @@
     <ClInclude Include="DirectXPage.xaml.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Content\CudaDraw.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="TextRenderer.h">
       <Filter>Content</Filter>
     </ClInclude>
   </ItemGroup>

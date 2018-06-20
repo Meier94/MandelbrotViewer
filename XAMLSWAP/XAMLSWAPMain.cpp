@@ -25,8 +25,8 @@ XAMLSWAPMain::XAMLSWAPMain(XAMLSWAP::DirectXPage^ page, const std::shared_ptr<DX
 	freopen_s(&consoleFD, "CON", "w", stdout);*/
 
 	//Panel1
-	int width = 1920;
-	int height = 1080;
+	int width = 1920*2/5;
+	int height = 1080*2/5;
 	SCPanel<CudaDraw>* Panel = new SCPanel<CudaDraw>(page, page->GetCanvas(), width, height, 10, 10);
 	Windows::UI::ViewManagement::ApplicationView::GetForCurrentView()->TryResizeView(Windows::Foundation::Size(width + 330, height + 20));
 	page->addPanel((long long int)Panel); //long long int to preserve entire address
